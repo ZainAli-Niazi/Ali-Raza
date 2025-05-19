@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/converter.css">
+    <title>AVIF to JPEG Converter</title>
+    <style>
+        /* Animation and Design Enhancements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animated {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        /* Color Scheme */
+        .hero {
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            color: #fff;
+        }
+        
+        /* Underlined Section Headers */
+        .section-header {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 4px;
+            background: linear-gradient(to right, #6e48aa, #9d50bb);
+            bottom: -12px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        /* Blog Cards Styling */
+        .converter-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .converter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, #6e48aa, #9d50bb);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-header i {
+            font-size: 1.4rem;
+        }
+        
+        .card-date {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .card-body h3 {
+            color: #6e48aa;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        /* Enhanced Card Tag Styles */
+        .card-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 5px rgba(110, 72, 170, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .card-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(110, 72, 170, 0.3);
+        }
+
+        .card-tag i {
+            margin-right: 4px;
+            font-size: 0.7rem;
+        }
+        
+        .card-tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .card-tip {
+            background-color: #f8f4ff;
+            border-left: 4px solid #9d50bb;
+            padding: 12px 15px;
+            margin-top: 20px;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .card-tip i {
+            color: #6e48aa;
+            margin-right: 8px;
+        }
+        
+        /* Visual Hierarchy Improvements */
+        .converter-blog-section {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+        }
+        
+        .converter-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .converter-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .converter-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-exchange-alt"></i> ImageConvert Pro
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Converters <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown">
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-png.html" class="dropdown-link">JPEG to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-jpeg.html" class="dropdown-link">PNG to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-webp.html" class="dropdown-link">JPEG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-webp.html" class="dropdown-link">PNG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-png.html" class="dropdown-link">WEBP to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-jpeg.html" class="dropdown-link">WEBP to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-jpeg.html" class="dropdown-link">AVIF to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-png.html" class="dropdown-link">AVIF to PNG</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#how-to-use" class="nav-link">How To Use</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#faqs" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+                <a href="index.html" class="mobile-dropdown-link">Home</a>
+            </li>
+            <li class="mobile-nav-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <a href="#" class="mobile-nav-link">Converters</a>
+                    <button class="mobile-dropdown-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="mobile-dropdown">
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-png.html" class="mobile-dropdown-link">JPEG to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-jpeg.html" class="mobile-dropdown-link">PNG to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-webp.html" class="mobile-dropdown-link">JPEG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-webp.html" class="mobile-dropdown-link">PNG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-png.html" class="mobile-dropdown-link">WEBP to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-jpeg.html" class="mobile-dropdown-link">WEBP to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-jpeg.html" class="mobile-dropdown-link">AVIF to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-png.html" class="mobile-dropdown-link">AVIF to PNG</a>
+                    </div>
+                </div>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#how-to-use" class="mobile-nav-link">How To Use</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#faqs" class="mobile-nav-link">FAQs</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content animated">
+            <h1>Convert AVIF to JPEG <br>With Maximum Compatibility</h1>
+            <p class="delay-1">Transform your modern AVIF images into widely-supported JPEG format without losing essential quality. Perfect for sharing across all platforms.</p>
+        </div>
+    </section>
+
+    <div class="converter-container">
+        <section class="converter-section">
+            <div class="converter-flex">
+                <div class="converter-info animated delay-1">
+                    <h2 class="section-header">AVIF to JPEG Converter</h2>
+                    <p>Upload your AVIF image and convert it to JPEG format while maintaining good quality. JPEG is the most compatible format for photos across all devices and platforms.</p>
+                    <form id="avifToJpegForm">
+                        <input type="file" id="avifToJpegInput" accept="image/avif" required>
+                        <button type="submit">
+                            <i class="fas fa-exchange-alt"></i> Convert to JPEG
+                        </button>
+                        <div id="avifToJpegError" class="error-message"></div>
+                        <div id="avifToJpegSuccess" class="success-message"></div>
+                    </form>
+                </div>
+                <div class="converter-output animated delay-2" id="avifToJpegOutput">
+                    <img id="avifToJpegPreview" src="aviftojpeg.png" alt="AVIF to JPEG Preview">
+                    <p class="placeholder-text">Your converted JPEG will appear here</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blog Section -->
+    <section class="converter-blog-section">
+        <div class="converter-header animated">
+            <h2><i class="fas fa-lightbulb"></i> AVIF to JPEG Conversion Guide</h2>
+            <p class="delay-1">Essential knowledge for converting between these next-gen and traditional image formats</p>
+        </div>
+
+        <div class="converter-blog-grid">
+            <!-- Blog Card 1 -->
+            <div class="converter-card animated delay-1">
+                <div class="card-header">
+                    <i class="fas fa-file-image"></i>
+                    <span class="card-date">July 10, 2024</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag-container">
+                        <span class="card-tag"><i class="fas fa-compatibility"></i> Compatibility</span>
+                        <span class="card-tag"><i class="fas fa-upload"></i> Sharing</span>
+                    </div>
+                    <h3>When to Convert AVIF to JPEG</h3>
+                    <p>While AVIF offers superior compression, JPEG remains the universal standard. Convert when you need maximum compatibility with older devices, social media platforms, or when file size is less critical than support.</p>
+                    <div class="card-tip">
+                        <i class="fas fa-info-circle"></i> Most social media platforms still convert uploaded images to JPEG automatically.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="converter-card animated delay-2">
+                <div class="card-header">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="card-date">July 5, 2024</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag-container">
+                        <span class="card-tag"><i class="fas fa-chart-bar"></i> Quality</span>
+                        <span class="card-tag"><i class="fas fa-compress"></i> Compression</span>
+                    </div>
+                    <h3>Quality Comparison</h3>
+                    <p>AVIF can be 50% smaller than JPEG at similar quality levels for photos. However, JPEG quality at 80-90% is often indistinguishable from AVIF for most viewing scenarios while maintaining wider compatibility.</p>
+                    <div class="card-tip">
+                        <i class="fas fa-info-circle"></i> For web use, JPEG quality of 75-85% provides the best balance.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="converter-card animated">
+                <div class="card-header">
+                    <i class="fas fa-mobile"></i>
+                    <span class="card-date">June 28, 2024</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag-container">
+                        <span class="card-tag"><i class="fas fa-mobile-alt"></i> Devices</span>
+                        <span class="card-tag"><i class="fas fa-globe"></i> Browsers</span>
+                    </div>
+                    <h3>Device Compatibility</h3>
+                    <p>As of 2024, AVIF support is growing but still not universal. Older smartphones (pre-2020), some browsers, and many applications still don't support AVIF. JPEG works everywhere without exception.</p>
+                    <div class="card-tip">
+                        <i class="fas fa-info-circle"></i> Check your audience's devices before choosing AVIF for critical images.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 4 -->
+            <div class="converter-card animated delay-1">
+                <div class="card-header">
+                    <i class="fas fa-camera"></i>
+                    <span class="card-date">June 20, 2024</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag-container">
+                        <span class="card-tag"><i class="fas fa-camera-retro"></i> Photography</span>
+                        <span class="card-tag"><i class="fas fa-print"></i> Printing</span>
+                    </div>
+                    <h3>Photography Considerations</h3>
+                    <p>For professional photography, AVIF preserves more detail in shadows and highlights. When converting to JPEG, use the highest quality setting (90-100%) to minimize quality loss in these areas.</p>
+                    <div class="card-tip">
+                        <i class="fas fa-info-circle"></i> For print photography, always use JPEG quality 95-100%.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 5 -->
+            <div class="converter-card animated delay-2">
+                <div class="card-header">
+                    <i class="fas fa-globe"></i>
+                    <span class="card-date">June 15, 2024</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag-container">
+                        <span class="card-tag"><i class="fas fa-tachometer-alt"></i> Performance</span>
+                        <span class="card-tag"><i class="fas fa-users"></i> Audience</span>
+                    </div>
+                    <h3>Web Performance</h3>
+                    <p>While AVIF files are smaller, the decoding time can be longer than JPEG on older devices. For websites targeting diverse audiences, JPEG may provide better overall performance.</p>
+                    <div class="card-tip">
+                        <i class="fas fa-info-circle"></i> Test both formats with your actual audience for the best results.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 6 -->
+            <div class="converter-card animated">
+                <div class="card-header">
+                    <i class="fas fa-edit"></i>
+                    <span class="card-date">June 10, 2024</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag-container">
+                        <span class="card-tag"><i class="fas fa-edit"></i> Editing</span>
+                        <span class="card-tag"><i class="fas fa-save"></i> Workflow</span>
+                    </div>
+                    <h3>Editing Workflow</h3>
+                    <p>Edit images in AVIF format when possible to preserve maximum quality, then export final versions to JPEG for distribution. Avoid multiple JPEG re-saves as quality degrades each time.</p>
+                    <div class="card-tip">
+                        <i class="fas fa-info-circle"></i> Maintain AVIF originals and create JPEG copies as needed.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <script src="/assets/js.js"></script>
+    <script>
+        // Enhanced Animation and Interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation trigger
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.animated');
+                const windowHeight = window.innerHeight;
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = 1;
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+            
+            // Form handling with basic preview
+            const form = document.getElementById('avifToJpegForm');
+            const fileInput = document.getElementById('avifToJpegInput');
+            const preview = document.getElementById('avifToJpegPreview');
+            const placeholder = document.querySelector('#avifToJpegOutput .placeholder-text');
+            const successMsg = document.getElementById('avifToJpegSuccess');
+            const errorMsg = document.getElementById('avifToJpegError');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                errorMsg.style.display = 'none';
+                
+                if (fileInput.files.length === 0) {
+                    errorMsg.textContent = 'Please select an AVIF file first';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+                
+                const file = fileInput.files[0];
+                if (!file.type.match('image/avif')) {
+                    errorMsg.textContent = 'Please select a valid AVIF image file';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+                
+                // In a real implementation, you would convert the AVIF to JPEG here
+                // For demo purposes, we'll just show the uploaded file
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    
+                    successMsg.textContent = 'Conversion complete! Right-click the image to save as JPEG.';
+                    successMsg.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            // Reset messages when new file selected
+            fileInput.addEventListener('change', function() {
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

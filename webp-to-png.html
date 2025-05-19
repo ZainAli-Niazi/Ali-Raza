@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/converter.css">
+    <link rel="stylesheet" href="assets/main.css">
+    <title>WEBP to PNG Converter </title>
+    <style>
+        /* Animation styles */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animated {
+            opacity: 0;
+        }
+        
+        .animate {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        
+        
+   .converter-blog-section {
+  background: #f4fcfc;
+  padding: 60px 20px;
+}
+
+.converter-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.converter-header h2 {
+  font-size: 32px;
+  color: #00796b;
+}
+
+.converter-header p {
+  font-size: 16px;
+  color: #555;
+}
+
+.converter-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.converter-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.converter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #009688;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.card-top i {
+  font-size: 18px;
+}
+
+.converter-card-content h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #004d40;
+}
+
+.converter-card-content p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.card-tip {
+  background: #e0f2f1;
+  color: #004d40;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated.animate {
+  animation: fadeUp 1s ease forwards;
+}
+.delay-1 {
+  animation-delay: 0.3s;
+}
+.delay-2 {
+  animation-delay: 0.6s;
+}
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .converter-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .converter-header p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .converter-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .converter-blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-exchange-alt"></i> ImageConvert Pro
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Converters <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown">
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-png.html" class="dropdown-link">JPEG to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-jpeg.html" class="dropdown-link">PNG to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-webp.html" class="dropdown-link">JPEG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-webp.html" class="dropdown-link">PNG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-png.html" class="dropdown-link">WEBP to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-jpeg.html" class="dropdown-link">WEBP to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-jpeg.html" class="dropdown-link">AVIF to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-png.html" class="dropdown-link">AVIF to PNG</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#how-to-use" class="nav-link">How To Use</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#faqs" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+                <a href="index.html" class="mobile-dropdown-link">Home</a>
+            </li>
+            <li class="mobile-nav-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <a href="#" class="mobile-nav-link">Converters</a>
+                    <button class="mobile-dropdown-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="mobile-dropdown">
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-png.html" class="mobile-dropdown-link">JPEG to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-jpeg.html" class="mobile-dropdown-link">PNG to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-webp.html" class="mobile-dropdown-link">JPEG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-webp.html" class="mobile-dropdown-link">PNG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-png.html" class="mobile-dropdown-link">WEBP to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-jpeg.html" class="mobile-dropdown-link">WEBP to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-jpeg.html" class="mobile-dropdown-link">AVIF to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-png.html" class="mobile-dropdown-link">AVIF to PNG</a>
+                    </div>
+                </div>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#how-to-use" class="mobile-nav-link">How To Use</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#faqs" class="mobile-nav-link">FAQs</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="animated animate">Convert WEBP to PNG <br> With Transparency</h1>
+            <p class="animated delay-1 animate">Transform your WEBP images into PNG format while preserving transparency. Perfect for logos, graphics, and any images that need lossless quality.</p>
+        </div>
+    </section>
+
+    <div class="converter-container">
+        <section class="converter-section">
+            <div class="converter-flex">
+                <div class="converter-info animated delay-1 animate">
+                    <h2>Convert WEBP to PNG</h2>
+                    <p>Upload your WEBP image and convert it to PNG format while maintaining transparency. PNG supports lossless compression, making it perfect for graphics.</p>
+                    <form id="webpToPngForm">
+                        <input type="file" id="webpToPngInput" accept="image/webp" required>
+                        <button type="submit">
+                            <i class="fas fa-exchange-alt"></i> Convert to PNG
+                        </button>
+                        <div id="webpToPngError" class="error-message"></div>
+                        <div id="webpToPngSuccess" class="success-message"></div>
+                    </form>
+                </div>
+                <div class="converter-output animated delay-2 animate" id="webpToPngOutput">
+                    <img id="webpToPngPreview" src="webptopng.png" alt="WEBP to PNG Preview">
+                    <p class="placeholder-text">Your converted PNG will appear here</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+   <!-- Blog Section -->
+<section class="converter-blog-section">
+  <div class="container">
+    <div class="converter-header animated animate">
+      <h2><i class="fas fa-lightbulb"></i> WEBP to PNG Conversion Guide</h2>
+      <p class="animated delay-1 animate">
+        Everything you need to know about converting WEBP to PNG format effectively
+      </p>
+    </div>
+
+    <div class="converter-blog-grid">
+      <!-- Blog Card 1 -->
+      <div class="converter-card animated delay-1 animate">
+        <div class="card-top">
+          <i class="fas fa-image"></i>
+          <span class="card-date">June 15, 2024</span>
+        </div>
+        <div class="converter-card-content">
+          <h3>Why Convert WEBP to PNG?</h3>
+          <p>
+            While WEBP offers excellent compression, PNG provides lossless quality
+            with transparency support. Convert when you need perfect quality for logos,
+            graphics, or when transparency is required.
+          </p>
+          <div class="card-tip">
+            <i class="fas fa-info-circle"></i> PNG maintains every pixel exactly as intended,
+            unlike lossy formats.
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Card 2 -->
+      <div class="converter-card animated delay-2 animate">
+        <div class="card-top">
+          <i class="fas fa-chart-pie"></i>
+          <span class="card-date">June 10, 2024</span>
+        </div>
+        <div class="converter-card-content">
+          <h3>File Size Comparison</h3>
+          <p>
+            WEBP files are typically 25-35% smaller than PNGs for similar quality.
+            However, PNGs offer perfect quality for graphics, while WEBP is better for photographs.
+          </p>
+          <div class="card-tip">
+            <i class="fas fa-info-circle"></i> For simple graphics, PNG can sometimes be
+            smaller than WEBP.
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Card 3 -->
+      <div class="converter-card animated animate">
+        <div class="card-top">
+          <i class="fas fa-palette"></i>
+          <span class="card-date">June 5, 2024</span>
+        </div>
+        <div class="converter-card-content">
+          <h3>Transparency Handling</h3>
+          <p>
+            Both WEBP and PNG support transparency, but PNG's implementation is more
+            widely supported across all browsers and applications without any compatibility issues.
+          </p>
+          <div class="card-tip">
+            <i class="fas fa-info-circle"></i> PNG supports alpha transparency for smooth edges
+            against any background.
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Card 4 -->
+      <div class="converter-card animated delay-1 animate">
+        <div class="card-top">
+          <i class="fas fa-mobile-alt"></i>
+          <span class="card-date">May 28, 2024</span>
+        </div>
+        <div class="converter-card-content">
+          <h3>Compatibility Matters</h3>
+          <p>
+            PNG works everywhere - all browsers, all devices, all applications. WEBP, while growing
+            in support, still has gaps in older systems and some professional software.
+          </p>
+          <div class="card-tip">
+            <i class="fas fa-info-circle"></i> When maximum compatibility is needed,
+            PNG is the safest choice.
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Card 5 -->
+      <div class="converter-card animated delay-2 animate">
+        <div class="card-top">
+          <i class="fas fa-edit"></i>
+          <span class="card-date">May 20, 2024</span>
+        </div>
+        <div class="converter-card-content">
+          <h3>Editing Considerations</h3>
+          <p>
+            PNG is preferred by graphic designers because it preserves all image data. Each edit
+            and save doesn't degrade quality, making it ideal for iterative work.
+          </p>
+          <div class="card-tip">
+            <i class="fas fa-info-circle"></i> For graphics that need frequent editing,
+            always work with PNG files.
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Card 6 -->
+      <div class="converter-card animated animate">
+        <div class="card-top">
+          <i class="fas fa-print"></i>
+          <span class="card-date">May 15, 2024</span>
+        </div>
+        <div class="converter-card-content">
+          <h3>Print vs Web Use</h3>
+          <p>
+            For print materials, PNG is often better than WEBP because printing requires
+            the highest quality images without compression artifacts.
+          </p>
+          <div class="card-tip">
+            <i class="fas fa-info-circle"></i> Most professional printers recommend PNG or TIFF
+            for best results.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+   <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-exchange-alt"></i> ImageConvert Pro
+                    </div>
+                    <p class="footer-about">
+                        A free online tool to convert your images between different formats instantly. Fast, secure, and
+                        easy to use.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#image-converters">Converters</a></li>
+                        <li><a href="#how-to-use">How To Use</a></li>
+                        <li><a href="#faqs">FAQs</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Converter Street, Digital City</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>support@imageconvertpro.com</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ImageConvert Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+     <script src="assets/js.js"></script>
+</body>
+</html>

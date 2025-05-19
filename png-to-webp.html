@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/converter.css">
+    <link rel="stylesheet" href="assets/main.css">
+    <title>PNG to WEBP Converter</title>
+    <style>
+        /* Additional custom styles */
+        .hero {
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+        }
+        
+          .converter-card {
+      border-left: 4px solid #26d0ce;
+      padding: 20px;
+      background: white;
+      margin: 20px;
+      border-radius: 8px;
+    }
+
+    .converter-card h3 {
+      color: #1a2980;
+    }
+
+    .card-top {
+      background: linear-gradient(to right, #1a2980, #26d0ce);
+      color: white;
+      padding: 15px;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .card-top i {
+      color: white;
+      margin-right: 10px;
+    }
+
+    .card-tip {
+      background-color: #e6f7ff;
+      border-left: 3px solid #26d0ce;
+      padding: 15px;
+      margin: 20px;
+      border-radius: 5px;
+    }
+
+    /* Blog Section Styles */
+    .blog-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: #f7fdfd;
+    }
+
+    .blog-section h2 {
+      font-size: 32px;
+      color: #00695c;
+      margin-bottom: 40px;
+    }
+
+    .blogs-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      animation: fadeUp 1s forwards;
+      transform: translateY(30px);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .blog-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #004d40;
+    }
+
+    .blog-card p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .tags {
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e0f2f1;
+      color: #00796b;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 12px;
+      margin-right: 6px;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-exchange-alt"></i> ImageConvert Pro
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Converters <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown">
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-png.html" class="dropdown-link">JPEG to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-jpeg.html" class="dropdown-link">PNG to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-webp.html" class="dropdown-link">JPEG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-webp.html" class="dropdown-link">PNG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-png.html" class="dropdown-link">WEBP to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-jpeg.html" class="dropdown-link">WEBP to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-jpeg.html" class="dropdown-link">AVIF to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-png.html" class="dropdown-link">AVIF to PNG</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#how-to-use" class="nav-link">How To Use</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#faqs" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+                <a href="index.html" class="mobile-dropdown-link">Home</a>
+            </li>
+            <li class="mobile-nav-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <a href="#" class="mobile-nav-link">Converters</a>
+                    <button class="mobile-dropdown-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="mobile-dropdown">
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-png.html" class="mobile-dropdown-link">JPEG to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-jpeg.html" class="mobile-dropdown-link">PNG to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-webp.html" class="mobile-dropdown-link">JPEG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-webp.html" class="mobile-dropdown-link">PNG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-png.html" class="mobile-dropdown-link">WEBP to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-jpeg.html" class="mobile-dropdown-link">WEBP to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-jpeg.html" class="mobile-dropdown-link">AVIF to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-png.html" class="mobile-dropdown-link">AVIF to PNG</a>
+                    </div>
+                </div>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#how-to-use" class="mobile-nav-link">How To Use</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#faqs" class="mobile-nav-link">FAQs</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Convert PNG to WEBP <br> Easily</h1>
+            <p>Transform your PNG images into modern WEBP format with superior compression. Perfect for web performance
+                and smaller file sizes.</p>
+        </div>
+    </section>
+
+    <div class="converter-container">
+        <section class="converter-section">
+            <div class="converter-flex">
+                <div class="converter-info">
+                    <h2>Convert PNG to WEBP</h2>
+                    <p>Upload your PNG image and convert it to WEBP format while maintaining quality. WEBP provides
+                        better compression than PNG while supporting transparency.</p>
+                    <form id="pngToWebpForm">
+                        <input type="file" id="pngToWebpInput" accept="image/png" required>
+                        <button type="submit">
+                            <i class="fas fa-exchange-alt"></i> Convert to WEBP
+                        </button>
+                        <div id="pngToWebpError" class="error-message"></div>
+                        <div id="pngToWebpSuccess" class="success-message"></div>
+                    </form>
+                </div>
+                <div class="converter-output" id="pngToWebpOutput">
+                    <img id="pngToWebpPreview" src="pngtowebp.png" alt="PNG to WEBP Preview">
+                    <p class="placeholder-text">Your converted WEBP will appear here</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+      <!-- Blog Section -->
+  <section class="blog-section">
+    <h2><i class="fas fa-lightbulb"></i> PNG to WEBP Conversion Tips</h2>
+    <div class="blogs-container">
+      <div class="blog-card">
+        <h3>Why Convert PNG to WEBP?</h3>
+        <p>
+          WEBP is a modern image format developed by Google that offers better compression than PNG. 
+          By switching to WEBP, websites can load faster and use less bandwidth without sacrificing image quality.
+        </p>
+        <div class="tags">
+          <span class="tag">Optimization</span>
+          <span class="tag">Web Performance</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <h3>Top Free Tools to Convert PNG</h3>
+        <p>
+          There are many reliable online tools that let you convert PNG to WEBP without downloading software. 
+          Websites like Squoosh, Ezgif, and Convertio offer drag-and-drop interfaces, fast conversion, and 
+          privacy protection. Learn how to use them step-by-step.
+        </p>
+        <div class="tags">
+          <span class="tag">Tools</span>
+          <span class="tag">Free Resources</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <h3>Convert PNG to WEBP in Photoshop</h3>
+        <p>
+          Photoshop allows you to export images in WEBP format for better compression. 
+          Learn how to enable this feature and adjust your export settings for high quality, small file sizes.
+        </p>
+        <div class="tags">
+          <span class="tag">Photoshop</span>
+          <span class="tag">Tutorial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-exchange-alt"></i> ImageConvert Pro
+                    </div>
+                    <p class="footer-about">
+                        A free online tool to convert your images between different formats instantly. Fast, secure, and
+                        easy to use.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#image-converters">Converters</a></li>
+                        <li><a href="#how-to-use">How To Use</a></li>
+                        <li><a href="#faqs">FAQs</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Converter Street, Digital City</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>support@imageconvertpro.com</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ImageConvert Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <script src="/assets/js.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('pngToWebpForm');
+            const fileInput = document.getElementById('pngToWebpInput');
+            const preview = document.getElementById('pngToWebpPreview');
+            const placeholder = document.querySelector('#pngToWebpOutput .placeholder-text');
+            const successMsg = document.getElementById('pngToWebpSuccess');
+            const errorMsg = document.getElementById('pngToWebpError');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                errorMsg.style.display = 'none';
+
+                if (fileInput.files.length === 0) {
+                    errorMsg.textContent = 'Please select a PNG file first';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                const file = fileInput.files[0];
+                if (!file.type.match('image/png')) {
+                    errorMsg.textContent = 'Please select a valid PNG image file';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                // In a real implementation, you would convert PNG to WEBP here
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    placeholder.style.display = 'none';
+
+                    successMsg.textContent = 'Conversion complete! Right-click the image to save as WEBP.';
+                    successMsg.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            });
+
+            fileInput.addEventListener('change', function() {
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

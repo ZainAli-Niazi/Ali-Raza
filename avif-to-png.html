@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/converter.css">
+    <title>AVIF to PNG</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-exchange-alt"></i> ImageConvert Pro
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Converters <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown">
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-png.html" class="dropdown-link">JPEG to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-jpeg.html" class="dropdown-link">PNG to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-webp.html" class="dropdown-link">JPEG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-webp.html" class="dropdown-link">PNG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-png.html" class="dropdown-link">WEBP to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-jpeg.html" class="dropdown-link">WEBP to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-jpeg.html" class="dropdown-link">AVIF to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-png.html" class="dropdown-link">AVIF to PNG</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#how-to-use" class="nav-link">How To Use</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#faqs" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+                <a href="index.html" class="mobile-dropdown-link">Home</a>
+            </li>
+            <li class="mobile-nav-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <a href="#" class="mobile-nav-link">Converters</a>
+                    <button class="mobile-dropdown-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="mobile-dropdown">
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-png.html" class="mobile-dropdown-link">JPEG to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-jpeg.html" class="mobile-dropdown-link">PNG to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-webp.html" class="mobile-dropdown-link">JPEG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-webp.html" class="mobile-dropdown-link">PNG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-png.html" class="mobile-dropdown-link">WEBP to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-jpeg.html" class="mobile-dropdown-link">WEBP to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-jpeg.html" class="mobile-dropdown-link">AVIF to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-png.html" class="mobile-dropdown-link">AVIF to PNG</a>
+                    </div>
+                </div>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#how-to-use" class="mobile-nav-link">How To Use</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#faqs" class="mobile-nav-link">FAQs</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Convert AVIF to PNG <br> Easily</h1>
+            <p>Transform your AVIF images into PNG format with transparent background support. Perfect for logos,
+                graphics, and any images that need transparency while maintaining high quality.</p>
+        </div>
+    </section>
+
+    <div class="converter-container">
+        <section class="converter-section">
+            <div class="converter-flex">
+                <div class="converter-info">
+                    <h2>Convert AVIF to PNG</h2>
+                    <p>Upload your AVIF image and convert it to PNG format while preserving quality. PNG supports
+                        transparency, making it perfect for logos and graphics.</p>
+                    <form id="avifToPngForm">
+                        <input type="file" id="avifToPngInput" accept="image/avif" required>
+                        <button type="submit">
+                            <i class="fas fa-exchange-alt"></i> Convert to PNG
+                        </button>
+                        <div id="avifToPngError" class="error-message"></div>
+                        <div id="avifToPngSuccess" class="success-message"></div>
+                    </form>
+                </div>
+                <div class="converter-output" id="avifToPngOutput">
+                    <img id="avifToPngPreview" src="aviftopng.png" alt="AVIF to PNG Preview">
+                    <p class="placeholder-text">Your converted PNG will appear here</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- Blog Section -->
+    <section class="converter-blog-section">
+        <div class="converter-header">
+            <h2><i class="fas fa-lightbulb"></i> AVIF to PNG Conversion Tips</h2>
+            <p>Learn how to get the best results when converting between these modern image formats</p>
+        </div>
+
+        <div class="converter-blog-grid">
+            <!-- Blog Card 1 -->
+            <div class="converter-card">
+                <div class="card-top">
+                    <i class="fas fa-question-circle"></i>
+                    <span class="card-date">June 5, 2024</span>
+                </div>
+                <h3>Why Convert AVIF to PNG?</h3>
+                <p>While AVIF offers excellent compression, PNG is universally supported and maintains lossless quality. PNG is ideal when you need transparency or wide compatibility across all platforms and browsers.</p>
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="converter-card">
+                <div class="card-top">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="card-date">May 22, 2024</span>
+                </div>
+                <h3>Quality Considerations</h3>
+                <p>AVIF provides superior compression but PNG ensures pixel-perfect quality. When converting, expect larger file sizes but guaranteed visual fidelity, especially for graphics with sharp edges.</p>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="converter-card">
+                <div class="card-top">
+                    <i class="fas fa-magic"></i>
+                    <span class="card-date">May 10, 2024</span>
+                </div>
+                <h3>Transparency Benefits</h3>
+                <p>AVIF supports transparency but PNG's alpha channel support is more widely compatible. Converting to PNG ensures your transparent images work everywhere without any issues.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <script src="/assets/js.js"></script>
+</body>
+
+</html>

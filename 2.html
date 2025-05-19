@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/converter.css">
+    <title>PNG to JPEG</title>
+    <style>
+        /* CSS to change coloring for everything except header */
+        body:not(.header) {
+            background-color: #f5f7fa;
+        }
+        
+        .hero {
+            background-color: #e8f4f8;
+            color: #2c3e50;
+        }
+        
+        .converter-container {
+            background-color: #ffffff;
+            color: #34495e;
+            border: 1px solid #d6e0ea;
+        }
+        
+        .converter-info h2 {
+            color: #2980b9;
+        }
+        
+        .converter-info p {
+            color: #7f8c8d;
+        }
+        
+        input[type="file"] {
+            border: 2px dashed #bdc3c7;
+            background-color: #ecf0f1;
+        }
+        
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        
+        .content-section {
+            background-color: #ffffff;
+            color: #34495e;
+            border: 1px solid #d6e0ea;
+        }
+        
+        .section-heading {
+            color: #2980b9;
+        }
+        
+        .feature-list li {
+            color: #7f8c8d;
+        }
+        
+        .tech-note {
+            color: #95a5a6;
+        }
+        
+        .scroll-to-top {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .scroll-to-top:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-exchange-alt"></i> ImageConvert Pro
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Converters <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown">
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-png.html" class="dropdown-link">JPEG to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-jpeg.html" class="dropdown-link">PNG to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-webp.html" class="dropdown-link">JPEG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-webp.html" class="dropdown-link">PNG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-png.html" class="dropdown-link">WEBP to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-jpeg.html" class="dropdown-link">WEBP to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-jpeg.html" class="dropdown-link">AVIF to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-png.html" class="dropdown-link">AVIF to PNG</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#how-to-use" class="nav-link">How To Use</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#faqs" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+                <a href="index.html" class="mobile-dropdown-link">Home</a>
+            </li>
+            <li class="mobile-nav-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <a href="#" class="mobile-nav-link">Converters</a>
+                    <button class="mobile-dropdown-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="mobile-dropdown">
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-png.html" class="mobile-dropdown-link">JPEG to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-jpeg.html" class="mobile-dropdown-link">PNG to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-webp.html" class="mobile-dropdown-link">JPEG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-webp.html" class="mobile-dropdown-link">PNG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-png.html" class="mobile-dropdown-link">WEBP to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-jpeg.html" class="mobile-dropdown-link">WEBP to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-jpeg.html" class="mobile-dropdown-link">AVIF to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-png.html" class="mobile-dropdown-link">AVIF to PNG</a>
+                    </div>
+                </div>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#how-to-use" class="mobile-nav-link">How To Use</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#faqs" class="mobile-nav-link">FAQs</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Convert PNG to JPEG <br> Easily</h1>
+            <p>Transform your PNG images into JPEG format with high quality compression. Perfect for photos and images where smaller file size is preferred over transparency.</p>
+        </div>
+    </section>
+
+    <div class="converter-container">
+      
+            <div class="converter-flex">
+                <div class="converter-info">
+                    <h2>Convert PNG to JPEG</h2>
+                    <p>Upload your PNG image and convert it to JPEG format. JPEG provides smaller file sizes which are ideal for web use and photography.</p>
+                    <form id="pngToJpegForm">
+                        <input type="file" id="pngToJpegInput" accept="image/png" required>
+                        <button type="submit">
+                            <i class="fas fa-exchange-alt"></i> Convert to JPEG
+                        </button>
+                        <div id="pngToJpegError" class="error-message"></div>
+                        <div id="pngToJpegSuccess" class="success-message"></div>
+                    </form>
+                </div>
+                <div class="converter-output" id="pngToJpegOutput">
+                    <img id="pngToJpegPreview" src="placeholder-image.png" alt="PNG to JPEG Preview">
+                    <p class="placeholder-text">Your converted JPEG will appear here</p>
+                </div>
+            </div>
+      
+    </div>
+
+    <section id="png-to-webp-section" class="content-section">
+        <div class="icon-badge">
+            <i class="fas fa-magic"></i>
+        </div>
+        <h2 class="section-heading">PNG to JPEG Converter</h2>
+        <p><strong>Purpose:</strong> Convert PNG files to JPEG format for smaller file sizes and better compatibility.</p>
+        <p><strong>Key Features:</strong></p>
+        <ul class="feature-list">
+            <li>Significantly smaller file sizes compared to PNG</li>
+            <li>Adjustable quality settings</li>
+            <li>Wide compatibility with all devices and browsers</li>
+            <li>Fast conversion process</li>
+        </ul>
+        <p class="tech-note"><strong>Technical Notes:</strong> Converts 8/16/24/32-bit PNGs to JPEG with configurable quality from 0-100%</p>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <script src="/assets/js.js"></script>
+    <script>
+        // PNG to JPEG Conversion Script
+        document.getElementById('pngToJpegForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const input = document.getElementById('pngToJpegInput');
+            const errorDiv = document.getElementById('pngToJpegError');
+            const successDiv = document.getElementById('pngToJpegSuccess');
+            const preview = document.getElementById('pngToJpegPreview');
+            const outputDiv = document.getElementById('pngToJpegOutput');
+            const placeholder = outputDiv.querySelector('.placeholder-text');
+            
+            // Reset messages
+            errorDiv.textContent = '';
+            successDiv.textContent = '';
+            
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                
+                // Check if file is PNG
+                if (!file.type.match('image/png')) {
+                    errorDiv.textContent = 'Please upload a PNG image file.';
+                    return;
+                }
+                
+                // Preview the image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    placeholder.style.display = 'none';
+                    preview.style.display = 'block';
+                    
+                    // Here you would typically send the image to a server for conversion
+                    // For demo purposes, we'll just show a success message
+                    successDiv.textContent = 'Image ready for conversion! (This is a demo - in a real app, the conversion would happen here)';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                errorDiv.textContent = 'Please select a file to convert.';
+            }
+        });
+    </script>
+</body>
+</html>

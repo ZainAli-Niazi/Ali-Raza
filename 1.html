@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/converter.css">
+    <title>JPEG to PNG</title>
+</head>
+<style>
+    :root {
+    --primary-color: #2dbeb4;
+    --primary-dark: #11908b;
+    --secondary-color: #f0fdfb;
+    --text-color: #145b5b;
+    --light-color: #ffffff;
+    --dark-color: #333333;
+    --gray-color: #f5f5f5;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --text-dark: #145b5b;
+    /* Added missing variable */
+    --text-medium: #145b5b;
+    /* Added missing variable */
+    --text-light: #ffffff;
+    /* Added missing variable */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Added missing variable */
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.15);
+    /* Added missing variable */
+    --shadow-btn: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Added missing variable */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow);
+    padding: 0.6rem 1.5em;
+
+
+    transition: var(--transition);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo i {
+    font-size: 1.5rem;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--light-color);
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-link:hover {
+    color: var(--light-color);
+    opacity: 0.8;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--light-color);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    padding: 10px 0;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 100;
+}
+
+.dropdown-item {
+    padding: 8px 20px;
+}
+
+.dropdown-link {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 400;
+    transition: var(--transition);
+    display: block;
+}
+
+.dropdown-link:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.nav-item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+}
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--light-color);
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--light-color);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: var(--transition);
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+.mobile-nav-list {
+    list-style: none;
+}
+
+.mobile-nav-item {
+    margin-bottom: 15px;
+}
+
+.mobile-nav-link {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-dropdown-btn {
+    background: none;
+    border: none;
+    color: var(--dark-color);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 15px;
+}
+
+.mobile-dropdown.active {
+    max-height: 500px;
+}
+
+.mobile-dropdown-item {
+    margin: 10px 0;
+}
+
+.mobile-dropdown-link {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 400;
+    display: block;
+    padding: 5px 0;
+}
+
+.mobile-dropdown-link:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .nav-list {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .dropdown {
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .header-container {
+        padding: 10px 0;
+    }
+
+    .mobile-menu {
+        top: 60px;
+    }
+}
+
+
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--secondary-color), var(--light-color));
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark);
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: var(--text-color);
+}
+
+.highlight {
+    color: var(--dark-color);
+    font-weight: bolder;
+}
+
+.converter-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.converter-section {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    /* box-shadow: var(--shadow); */
+
+
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin: 30px auto;
+}
+
+.converter-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.converter-info,
+.converter-output {
+    flex: 1;
+    min-width: 300px;
+    padding: 2rem;
+}
+
+.converter-info {
+    border-right: 1px solid var(--gray-color);
+}
+
+.converter-info h2 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.converter-info p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.converter-info form {
+    display: flex;
+    flex-direction: column;
+}
+
+.converter-info input[type="file"] {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--gray-color);
+    transition: var(--transition);
+}
+
+.converter-info input[type="file"]:hover {
+    border-color: var(--primary-color);
+}
+
+.converter-info button {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.converter-info button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.converter-output {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.converter-output img {
+    max-width: 300px;
+    max-height: 300px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--gray-color);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.converter-output img:hover {
+    transform: scale(1.03);
+}
+
+.converter-output button {
+    background-color: var(--primary-dark);
+    color: var(--light-color);
+    border: none;
+    padding: 0.7rem 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.converter-output button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.placeholder-text {
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-top: 1rem;
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-top: 1rem;
+    font-weight: 500;
+    padding: 0.7rem;
+    background-color: #fdecea;
+    border-radius: 5px;
+    display: none;
+}
+
+.success-message {
+    color: #2ecc71;
+    margin-top: 1rem;
+    font-weight: 500;
+    padding: 0.7rem;
+    background-color: #e8f8f0;
+    border-radius: 5px;
+    display: none;
+}
+
+
+/* Blog Section */
+.converter-blog-section {
+    background: linear-gradient(135deg, var(--secondary-color), var(--light-color));
+    padding: 60px 20px;
+    border-top: 5px solid var(--primary-color);
+}
+
+.converter-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.converter-header h2 {
+    font-size: 2.2em;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+}
+
+.converter-header p {
+    color: var(--text-color);
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.converter-blog-grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.converter-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 30px;
+    transition: var(--transition);
+    border-left: 4px solid var(--primary-color);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.converter-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.card-top i {
+    font-size: 1.8em;
+}
+
+.card-date {
+    font-size: 0.9em;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.converter-card h3 {
+    font-size: 1.3em;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+}
+
+.converter-card p {
+    font-size: 1em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.converter-btn {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1em;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.converter-btn:hover {
+    color: var(--primary-dark);
+}
+
+.converter-btn i {
+    font-size: 0.8em;
+}
+
+@media (max-width: 768px) {
+
+    .converter-info {
+        border-right: none;
+        border-bottom: 1px solid var(--gray-color);
+    }
+
+    .converter-flex {
+        flex-direction: column;
+    }
+}
+</style>
+<body>
+     <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-exchange-alt"></i> ImageConvert Pro
+            </a>
+            
+            <nav class="nav">
+
+
+                <ul class="nav-list">
+
+                     <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Converters <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown">
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-png.html" class="dropdown-link">JPEG to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-jpeg.html" class="dropdown-link">PNG to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="jpeg-to-webp.html" class="dropdown-link">JPEG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="png-to-webp.html" class="dropdown-link">PNG to WEBP</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-png.html" class="dropdown-link">WEBP to PNG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="webp-to-jpeg.html" class="dropdown-link">WEBP to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-jpeg.html" class="dropdown-link">AVIF to JPEG</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="avif-to-png.html" class="dropdown-link">AVIF to PNG</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#how-to-use" class="nav-link">How To Use</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#faqs" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+   
+   <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+                <a href="index.html" class="mobile-dropdown-link">Home</a>
+            </li>
+            <li class="mobile-nav-item">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <a href="#" class="mobile-nav-link">Converters</a>
+                    <button class="mobile-dropdown-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="mobile-dropdown">
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-png.html" class="mobile-dropdown-link">JPEG to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-jpeg.html" class="mobile-dropdown-link">PNG to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="jpeg-to-webp.html" class="mobile-dropdown-link">JPEG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="png-to-webp.html" class="mobile-dropdown-link">PNG to WEBP</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-png.html" class="mobile-dropdown-link">WEBP to PNG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="webp-to-jpeg.html" class="mobile-dropdown-link">WEBP to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-jpeg.html" class="mobile-dropdown-link">AVIF to JPEG</a>
+                    </div>
+                    <div class="mobile-dropdown-item">
+                        <a href="avif-to-png.html" class="mobile-dropdown-link">AVIF to PNG</a>
+                    </div>
+                </div>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#how-to-use" class="mobile-nav-link">How To Use</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#faqs" class="mobile-nav-link">FAQs</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+     <section class="hero">
+      
+        <h1>Convert <span class="highlight">JPEG to PNG</span> Easily</h1>
+        <p>Transform your JPEG images into PNG format with transparent background support. Perfect for logos, graphics, and any images that need transparency.</p>
+    </section>
+
+    <div class="converter-container">
+        <section class="converter-section">
+            <div class="converter-flex">
+                <div class="converter-info">
+                    <h2>Convert JPEG to PNG</h2>
+                    <p>Upload your JPEG image and convert it to PNG format while preserving quality. PNG supports transparency, making it perfect for logos and graphics.</p>
+                    <form id="jpegToPngForm">
+                        <input type="file" id="jpegToPngInput" accept="image/jpeg" required>
+                        <button type="submit">
+                            <i class="fas fa-exchange-alt"></i> Convert to PNG
+                        </button>
+                        <div id="jpegToPngError" class="error-message"></div>
+                        <div id="jpegToPngSuccess" class="success-message"></div>
+                    </form>
+                </div>
+                <div class="converter-output" id="jpegToPngOutput">
+                    <img id="jpegToPngPreview" src="jpegtopnj.png" alt="JPEG to PNG Preview">
+                    <p class="placeholder-text">Your converted PNG will appear here</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+     <!-- Blog Section -->
+    <section class="converter-blog-section">
+        <div class="converter-header">
+            <h2><i class="fas fa-lightbulb"></i> JPEG to PNG Conversion Tips</h2>
+            <p>Learn how to get the best results when converting between these popular image formats</p>
+        </div>
+
+        <div class="converter-blog-grid">
+            <!-- Blog Card 1 -->
+            <div class="converter-card">
+                <div class="card-top">
+                    <i class="fas fa-question-circle"></i>
+                    <span class="card-date">June 5, 2024</span>
+                </div>
+                <h3>When to Use PNG</h3>
+                <p>PNG is the best choice for images requiring transparency, such as logos, icons, and graphics with text. It uses lossless compression, meaning no quality is lost during saves.</p>
+                 
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="converter-card">
+                <div class="card-top">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="card-date">May 22, 2024</span>
+                </div>
+                <h3>Quality Comparison</h3>
+                <p>While JPEG is great for photos, PNG maintains better quality for graphics with sharp edges and solid colors. PNG also supports alpha transparency for smooth edges.</p>
+                
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="converter-card">
+                <div class="card-top">
+                    <i class="fas fa-magic"></i>
+                    <span class="card-date">May 10, 2024</span>
+                </div>
+                <h3>Transparency Tips</h3>
+                <p>When converting JPEG to PNG, use our transparency option to remove white backgrounds. This works best with logos and graphics that have clear contrast with their background.</p>
+                 
+            </div>
+        </div>
+    </section>
+
+
+        <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+     <script src="/assets/js.js"></script>
+</body>
+</html>
